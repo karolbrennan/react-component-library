@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./views/Home";
-import "./sass/framework.scss";
+import "./sass/styles.scss";
 
 class App extends React.Component {
   render() {
