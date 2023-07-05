@@ -37,6 +37,18 @@ main {
   flex-grow: 4;
 }
 
+// Elements ------------------------------------
+button {
+  border: none;
+  background: none;
+  --webkit-appearance: none;
+  &.toggle {
+    font-size: 1em;
+    vertical-align: middle;
+    cursor: pointer;
+  }
+}
+
 // Pages ---------------------------------------
 section {
   padding: var(--size-xxlg) var(--size-xxlg);
@@ -47,222 +59,13 @@ section {
     }
   }
 }
-.back-link {
-  float: right;
-}
-
-// Header ---------------------------------------
-header {
-  background: var(--primary-color);
-  padding: var(--size-md);
-  > .container {
-    max-width: var(--container-width);
-  }
-
-  // Logo
-  .logo {
-    height: 3rem;
-    max-height: 100%;
-  }
-  .logo-dark {
-    fill: var(--dark-gray);
-  }
-  .logo-o,
-  .logo-color {
-    fill: var(--primary-color);
-  }
-
-  .home-link {
-    color: var(--white);
-    font-size: 1.5rem;
-    font-weight: bold;
-    text-decoration: none;
-    text-shadow: 1px 1px rgb(0 0 0 / 45%);
-    &:hover {
-      color: var(--off-white);
-    }
-    .logo {
-      height: 2rem;
-      .logo-dark {
-        fill: var(--white);
-      }
-      .logo-color,
-      .logo-o {
-        fill: var(--white);
-      }
-    }
-  }
-
-  // Menus
-  .header-icon {
-    text-align: center;
-    align-content: center;
-    .icon-button {
-      padding: 5px;
-      margin: 0;
-      border: var(--input-border-transparent);
-      .fi,
-      svg {
-        transition: var(--ease-transition);
-        z-index: 1;
-      }
-      .fi {
-        font-size: var(--icon-size);
-        color: var(--off-white);
-        line-height: var(--icon-size);
-        vertical-align: -webkit-baseline-middle;
-      }
-      svg {
-        width: var(--icon-size);
-        height: var(--icon-size);
-        fill: var(--off-white);
-      }
-    }
-    &:hover {
-      .icon-button {
-        border: var(--input-border-transparent);
-        background-color: var(--off-white);
-        .fi {
-          color: var(--secondary-color);
-        }
-        svg {
-          fill: var(--secondary-color);
-        }
-      }
-    }
-  }
-
-  // Google Translate
-  .translate-button {
-    position: relative;
-    .fi {
-      z-index: 1;
-    }
-    &:focus,
-    &:focus-within {
-      border: 3px solid var(--focus-color);
-    }
-  }
-  #google_translate_element {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-
-    z-index: 2;
-    .goog-te-gadget {
-      font-size: 0;
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      display: block;
-      height: 100%;
-      span {
-        display: none;
-      }
-    }
-    .goog-te-combo {
-      background: transparent;
-      border: none;
-      color: transparent;
-      cursor: pointer;
-      height: calc(var(--icon-size) + 5px);
-      position: absolute;
-      top: 0;
-      right: 0;
-      width: 200px;
-      height: 100%;
-      margin: 0;
-      outline: none;
-      padding: 0;
-      width: 100%;
-      -moz-appearance: none;
-      -webkit-appearance: none;
-      appearance: none;
-    }
-  }
-}
-
-// Footer ---------------------------------------
-footer {
-  flex: 0;
-  padding: var(--size-md) var(--size-xxlg);
-  width: 100%;
-  > .container {
-    max-width: var(--container-width);
-  }
-  p,
-  a {
-    color: var(--muted-foreground);
-  }
-  a:hover {
-    color: var(--muted-foreground-hover);
-  }
-}
-
-// About ----------------------------------------
-.karol-headshot {
-  width: 15rem;
-  margin: 1rem;
-  border: 5px solid white;
-}
-.aside {
-  background: rgba(0, 0, 0, 0.3);
-  padding: var(--size-xlg) !important;
-}
-.bingo-caller-photo {
-  float: right;
-  width: 200px;
-  padding: 0 1rem;
-}
-
-@media screen and (max-width: 700px) {
-  .about-page {
-    .aside {
-      width: 100%;
-      flex: 1 1 !important;
-      text-align: center;
-    }
-    .container.desktop-no-wrap > .col > .row.desktop-no-wrap > .col.grow {
-      width: 100%;
-      flex: 100%;
-    }
-    .donate {
-      margin-bottom: var(--size-xlg);
-    }
-  }
-}
-
-// Bingo! Screen --------------------------------
-.bingo-screen {
-  border: 5px solid var(--primary-color);
-  .logo {
-    margin-top: -40px;
-    .logo-color {
-      fill: transparent !important;
-      display: none;
-    }
-    .logo-dark {
-      fill: white;
-    }
-  }
-}
-
-// Donate ---------------------------------------
-.donate {
-  height: 150px;
-  width: auto;
-}
 
 // Helper Text ----------------------------------
 .helper-block {
   cursor: pointer;
   display: inline-block;
   margin-left: 5px;
-  vertical-align: top;
+  vertical-align: middle;
 
   .helper-text {
     display: block;
@@ -309,7 +112,7 @@ footer {
 
   &.right {
     .helper-info:hover + .helper-text {
-      margin: 8px 10px 0 -20px;
+      margin: 4px 10px 0 -20px;
     }
   }
   &.left {
