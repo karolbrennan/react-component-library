@@ -1,6 +1,6 @@
 import React from "react";
-import { dispatchCustomEvent } from "../helpers/Utilities";
-import HelperText from "./HelperText";
+import { dispatchCustomEvent } from "../../helpers/Utilities";
+import HelperText from "../HelperText";
 
 /**
  * Toggle class

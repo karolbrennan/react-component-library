@@ -49,6 +49,259 @@ button {
   }
 }
 
+code {
+  display: block;
+  white-space: pre;
+  font-family: Consolas, "courier new";
+  color: #00487b;
+  background-color: #f1f1f1;
+  border-radius: 5px;
+  padding: 1rem;
+  font-size: 0.8rem;
+  overflow-y: auto;
+  max-height: 300px;
+}
+
+// Custom Inputs
+
+.dropdown-group {
+  position: relative;
+  width: 220px;
+  max-width: 100%;
+  .dropdown-control {
+    position: relative;
+    .dropdown-trigger {
+      background: white;
+      border: none;
+      color: var(--dark-gray);
+      position: absolute;
+      right: 4px;
+      top: 4px;
+      bottom: 4px;
+      padding: 5px;
+    }
+  }
+  .dropdown {
+    position: absolute;
+    max-height: 0;
+    transition: var(--ease-transition);
+    width: 100%;
+    z-index: 4;
+    margin-top: -4px;
+    &.open {
+      background: var(--white);
+      border: var(--input-border-focus);
+      border-radius: var(--input-border-radius);
+      max-height: 150px;
+      overflow-y: auto;
+    }
+    &.closed {
+      overflow-y: hidden;
+    }
+    button {
+      @include text-button;
+      font-family: var(--condensed-font);
+      background: transparent;
+      border-radius: 0;
+      color: var(--dark-gray);
+      display: block;
+      padding: 5px;
+      text-align: left;
+      width: 100%;
+      &:hover {
+        background: var(--accent-background);
+        color: var(--accent-foreground);
+      }
+    }
+  }
+}
+label button.dropdown-reset,
+button.dropdown-reset {
+  padding: 0 0.5em;
+  border: none;
+  float: right;
+  i.fi {
+    font-size: 14px;
+    color: var(--gray);
+    transition: var(--ease-transition);
+  }
+  &:hover {
+    i.fi {
+      color: var(--primary-color);
+    }
+  }
+  &:active i.fi {
+    color: var(--primary-color) !important;
+  }
+  &:focus {
+    @include focus;
+  }
+}
+
+label:has(:disabled):not(.range) .label-text {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.toggle {
+  color: var(--gray);
+  padding: 0;
+  vertical-align: bottom;
+  margin-right: 0.5em;
+  border: none;
+  &:active,
+  &:hover {
+    border: none;
+  }
+  &:focus {
+    @include focus;
+  }
+  &.active {
+    border: none;
+    color: var(--primary-color);
+    i.fi {
+      color: var(--primary-color);
+    }
+  }
+}
+
+.range {
+  &.disabled {
+    .label-text,
+    .range-controls {
+      opacity: 0.5;
+    }
+    &:hover {
+      .label-text,
+      .range-controls {
+        cursor: not-allowed;
+      }
+    }
+  }
+  .range-value {
+    color: var(--primary-color);
+    display: inline-block;
+    font-size: 0.8em;
+    font-weight: normal;
+    padding: 0 7px;
+  }
+  .range-controls {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 250px;
+    padding-top: 10px;
+    .range-buttons {
+      display: flex;
+      flex: 1 0;
+      align-items: center;
+      div {
+        flex: 0 1 auto;
+        &.range-input {
+          flex: 1 0 auto;
+          input {
+            border: none;
+          }
+        }
+        button {
+          text-align: center;
+          color: var(--primary-color);
+          font-size: 24px;
+          font-weight: 900;
+          padding: 0;
+          border: none;
+          transition: var(--ease-transition);
+          &:focus {
+            @include focus;
+          }
+          &:hover {
+            color: var(--secondary-color);
+          }
+        }
+      }
+    }
+  }
+  input[type="range"] {
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%; /* Specific width is required for Firefox. */
+    background: transparent; /* Otherwise white in Chrome */
+    height: 0;
+    &::-webkit-slider-runnable-track {
+      background: transparent;
+      border-top: 3px solid var(--gray);
+      border-radius: 3px;
+      height: 0px;
+    }
+    &::-webkit-slider-thumb {
+      margin-top: -9px;
+      -moz-appearance: none;
+      -webkit-appearance: none;
+      appearance: none;
+      background: var(--primary-color);
+      width: 15px;
+      height: 15px;
+      border-radius: 100%;
+      cursor: pointer;
+      z-index: 2;
+      transition: var(--ease-transition);
+    }
+    &:active {
+      &::-webkit-slider-thumb {
+        transform: scale(1.5);
+      }
+    }
+    &:focus {
+      @include focus; /* Removes the blue border. */
+    }
+    &::-ms-track {
+      width: 100%;
+      cursor: pointer;
+
+      /* Hides the slider so custom styles can be added */
+      background: transparent;
+      border-color: transparent;
+      color: transparent;
+    }
+  }
+}
+
+.button-group {
+  margin-top: 3px;
+  button {
+    margin: 0;
+    border-radius: 0;
+    border-style: solid;
+    border-left: none;
+    border-right: none;
+    &:hover {
+      border-color: var(--primary-color);
+      &:first-of-type {
+        border-left: var(--input-border-hover);
+      }
+      &:last-of-type {
+        border-right: var(--input-border-hover);
+      }
+    }
+    &:first-of-type {
+      border-left: var(--input-border-solid);
+      border-top-left-radius: var(--input-border-radius);
+      border-bottom-left-radius: var(--input-border-radius);
+    }
+    &:last-of-type {
+      border-right: var(--input-border-solid);
+      border-top-right-radius: var(--input-border-radius);
+      border-bottom-right-radius: var(--input-border-radius);
+    }
+    &.selected {
+      border-color: var(--primary-color);
+      background-color: var(--primary-color);
+      color: var(--white);
+    }
+  }
+}
+
 // Pages ---------------------------------------
 section {
   padding: var(--size-xxlg) var(--size-xxlg);
